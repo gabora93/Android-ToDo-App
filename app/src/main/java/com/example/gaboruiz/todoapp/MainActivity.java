@@ -148,7 +148,7 @@ public class MainActivity extends AppCompatActivity {
             String urlString = params[0];
 
             HTTPDataHandler hh = new HTTPDataHandler();
-            String json = "{'item' :'" + item + "', 'id' : '"+ UUID.randomUUID().toString() +"'}";
+            String json = "{'item' :'" + item + "', 'id' : '"+ UUID.randomUUID().toString() +"', 'completed' : false}";
             hh.PostHTTPData(urlString,json);
             return "";
         }
@@ -188,7 +188,7 @@ public class MainActivity extends AppCompatActivity {
             String urlString = params[0];
 
             HTTPDataHandler hh = new HTTPDataHandler();
-            String json = "{'item' :'" + item + "', 'id' : '"+ UUID.randomUUID().toString() +"'}";
+            String json = "{'item' :'" + item + "', 'id' : '"+ UUID.randomUUID().toString() +"','completed' : false}";
             hh.PutHTTPData(urlString,json);
             return "";
         }
