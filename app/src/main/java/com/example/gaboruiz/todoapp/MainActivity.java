@@ -18,6 +18,7 @@ import com.google.gson.reflect.TypeToken;
 import java.lang.reflect.Type;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Random;
 import java.util.UUID;
 
 public class MainActivity extends AppCompatActivity {
@@ -30,6 +31,7 @@ public class MainActivity extends AppCompatActivity {
     EditText edtItem;
     item itemSelected=null;
     List<item> items = new ArrayList<item>();
+    Random rand = new Random();
 
 
     @Override
@@ -64,7 +66,7 @@ public class MainActivity extends AppCompatActivity {
                 new PostData(edtItem.getText().toString()).execute(Common.getAddressAPI());
             }
         });
-    //BECAUSE THIS FUNCTION WE NEED PARAMETER ITEMSELECTED, SO WE NEED SET ITEMSELECTED
+    //BECAUSE OF THIS FUNCTION WE NEED PARAMETER ITEMSELECTED, SO WE NEED SET ITEMSELECTED
         //WHEN USER CLICK ON ITEM IN LISTVIEW
         btnEdit.setOnClickListener(new View.OnClickListener(){
             @Override
@@ -148,7 +150,7 @@ public class MainActivity extends AppCompatActivity {
             String urlString = params[0];
 
             HTTPDataHandler hh = new HTTPDataHandler();
-            String json = "{'item' :'" + item + "', 'id' : '"+ UUID.randomUUID().toString() +"', 'completed' : false}";
+            String json = "{'item' :'" + item + "', 'id' : "+ rand.nextInt(9000000) + 1000000+",'completed' : false}";
             hh.PostHTTPData(urlString,json);
             return "";
         }
@@ -188,7 +190,7 @@ public class MainActivity extends AppCompatActivity {
             String urlString = params[0];
 
             HTTPDataHandler hh = new HTTPDataHandler();
-            String json = "{'item' :'" + item + "', 'id' : '"+ UUID.randomUUID().toString() +"','completed' : false}";
+            String json = "{'item' :'" + item + "', 'id' : "+ rand.nextInt(9000000) + 1000000+",'completed' : false}";
             hh.PutHTTPData(urlString,json);
             return "";
         }
