@@ -18,6 +18,7 @@ import com.google.gson.reflect.TypeToken;
 import java.lang.reflect.Type;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.UUID;
 
 public class MainActivity extends AppCompatActivity {
     //private ArrayList<String> items;
@@ -68,7 +69,7 @@ public class MainActivity extends AppCompatActivity {
         btnEdit.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View v){
-
+                new PutData(edtItem.getText().toString()).execute(Common.getAddressSingle(itemSelected));
             }
         });
 
@@ -147,7 +148,7 @@ public class MainActivity extends AppCompatActivity {
             String urlString = params[0];
 
             HTTPDataHandler hh = new HTTPDataHandler();
-            String json="(\"item\":\""+item+"\")";
+            String json = "{'item' :'" + item + "', 'id' : '"+ UUID.randomUUID().toString() +"'}";
             hh.PostHTTPData(urlString,json);
             return "";
         }
@@ -187,7 +188,7 @@ public class MainActivity extends AppCompatActivity {
             String urlString = params[0];
 
             HTTPDataHandler hh = new HTTPDataHandler();
-            String json="(\"item\":\""+item+"\")";
+            String json = "{'item' :'" + item + "', 'id' : '"+ UUID.randomUUID().toString() +"'}";
             hh.PutHTTPData(urlString,json);
             return "";
         }
@@ -226,7 +227,7 @@ public class MainActivity extends AppCompatActivity {
             String urlString = params[0];
 
             HTTPDataHandler hh = new HTTPDataHandler();
-            String json="(\"item\":\""+item.getItem()+"\")";
+            String json="{\"item\":\""+item.getItem()+"\"}";
             hh.DeleteHTTPData(urlString,json);
             return "";
         }
